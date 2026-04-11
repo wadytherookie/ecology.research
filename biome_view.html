@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>أبحاث المناطق الحيوية - فيديو 4K</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --biome-color: #2ecc71; --bg-dark: #020806; --glass: rgba(255, 255, 255, 0.02); --gold: #d4af37; }
+        body { background-color: var(--bg-dark); color: #f8f9fa; font-family: 'Cairo', sans-serif; margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background-image: radial-gradient(circle at 20% 20%, rgba(10, 46, 31, 0.4), transparent), radial-gradient(circle at 80% 80%, rgba(5, 15, 10, 0.4), transparent); padding: 30px; }
+        .main-container { background: var(--glass); backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; padding: 60px; width: 100%; max-width: 1300px; box-shadow: 0 40px 100px rgba(0,0,0,0.8); }
+        .top-brand { font-size: 0.9rem; font-weight: 700; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; }
+        .top-brand::after { content: ""; flex-grow: 1; height: 1px; background: linear-gradient(to left, var(--gold), transparent); margin-right: 20px; }
+        h1 { font-size: clamp(2.5rem, 9vw, 5rem); font-weight: 900; margin-bottom: 40px; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 40px; }
+        .info-card { background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 20px; border-right: 5px solid var(--biome-color); }
+        .label { display: block; color: var(--biome-color); font-size: 0.8rem; font-weight: 900; margin-bottom: 10px; }
+        .content-value { font-size: 1.4rem; font-weight: 300; }
+        
+        /* Updated Video Section for iFrame */
+        .video-section { width: 100%; border-radius: 30px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); background: #000; position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-section iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        
+        .footer-credits { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: space-between; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+        @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } .main-container { padding: 30px; } }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="top-brand">Dar Althikr</div>
+        <h1 id="biome-title">جاري تحميل البيانات...</h1>
+        <div class="info-grid">
+            <div class="info-card"><span class="label">درجة الحرارة</span><span id="temp" class="content-value">--</span></div>
+            <div class="info-card"><span class="label">معدل التساقط</span><span id="rain" class="content-value">--</span></div>
+            <div class="info-card"><span class="label">الحياة النباتية</span><span id="plants" class="content-value">--</span></div>
+            <div class="info-card"><span class="label">الحياة الحيوانية</span><span id="animals" class="content-value">--</span></div>
+        </div>
+        <div class="video-section">
+            <iframe id="biome-video" src="" allow="autoplay; fullscreen"></iframe>
+        </div>
+        <div class="footer-credits">
+            <span>نظام أبحاث البيئة الرقمي 2026</span>
+            <span class="author-name">Mohamed Moustafa Alsharif</span>
+        </div>
+    </div>
+
+<script>
+    const db = {
+    "tundra": { 
+        title: "التندرا", 
+        temp: "-34°C إلى 12°C", 
+        rain: "15-25 سم", 
+        plants: "حشائش، شجيرات", 
+        animals: "الدببة القطبية، الرنة، الثعالب القطبية", 
+        color: "#a5f3fc", 
+        video: "https://drive.google.com/file/d/1X-TpXrW33I2aiGKDj1pEtG54WfX1b5Dt/preview" 
+    },
+    "taiga": { 
+        title: "الغابات الشمالية (التايغا)", 
+        temp: "-54°C إلى 21°C", 
+        rain: "30-84 سم", 
+        plants: "أشجار السرو, أشجار متساقطة الاوراق", 
+        animals: "ثيران الموس, القندس",
+        color: "#16a085", 
+        video: "https://drive.google.com/file/d/1jV2zmIdP_BmFrdlrnBv4zvgVBoGXr3nd/preview" 
+    },
+    "temperate_forest": { 
+        title: "الغابات المعتدلة", 
+        temp: "-30°C إلى 30°C", 
+        rain: "75-150 سم", 
+        plants: "أشجار متساقطة الأوراق (البلوط، الزان)", 
+        animals: "السناجب، الغزلان، الثعالب", 
+        color: "#27ae60", 
+        video: "https://drive.google.com/file/d/1qHN3iaYCubLQyePDaitZwxtEV8ADDlY0/preview" 
+    },
+    "woodland": { 
+        title: "المناطق الحرجية والشجيرية", 
+        temp: "10°C إلى 40°C", 
+        rain: "38-100 سم", 
+        plants: "شجيرات دائم الخضرة، البلوط ", 
+        animals: "الأرانب، الطيور، الوشق", 
+        color: "#95a5a6", 
+        video: "https://drive.google.com/file/d/1OKEeZ8-QfUoUwX3rZkgApDcCSzmHXTl0/preview" 
+    },
+    "grassland": { 
+        title: "المناطق العشبية المعتدلة", 
+        temp: "-40°C إلى 38°C", 
+        rain: "50-89 سم", 
+        plants: "الأعشاب، الحشائش ", 
+        animals: "البيسون، العناكب، الخيول ", 
+        color: "#f4e285", 
+        video: "https://drive.google.com/file/d/12WMa77l94SfIq7XJIL2yiFvb9r2Xl1Xc/preview" 
+    },
+    "desert": {
+        title: "الصحراء",
+        temp: "20°C إلى 49°C, أقل مدى: °C-18 الى °C10",
+        rain: "6cm-26cm",
+        plants: "الصبار، الطلح، النباتات العصارية",
+        animals: "الجمال، الزواحف، الوشق",
+        color: "#ff9f1c",
+        video: "https://drive.google.com/file/d/1ZA-97h2y9qGPUngHY6YBa_ds2AH24TiL/preview"
+    },
+    "savanna": { 
+        title: "السفانا الاستوائية", 
+        temp: "20°C إلى 30°C", 
+        rain: "50-130 سم", 
+        plants: "الحشائش، أشجار متفرقة", 
+        animals: "الأسود، الزرافات، الفيلة", 
+        color: "#e67e22", 
+        video: "https://drive.google.com/file/d/1wD6nD7UIXUAVqLbrDfrNFITm2x_Rw4l9/preview" 
+    },
+    "seasonal_forest": { 
+        title: "الغابات الاستوائية الموسمية", 
+        temp: "20°C إلى 25°C", 
+        rain: "أكثر من 200 سم", 
+        plants: "أشجار دائمة الخضر، السحلبيات، أوركيدا", 
+        animals: "القردة، النمور، الفيلة", 
+        color: "#d35400", 
+        video: "https://drive.google.com/file/d/1VUUwEwSC-XGhhOzCdndx_3xBVJnUTyFf/preview" 
+    },
+    "rainforest": { 
+        title: "الغابات الاستوائية المطيرة", 
+        temp: "24°C إلى 27°C", 
+        rain: "200-1000 سم", 
+        plants: "نباتات عريضة الاوراق دائمة الخضر، الخيزران، قصب السكر", 
+        animals: ", أفاعي الكوبرا النمر البنغالي، الطوقان، الكسلان", 
+        color: "#2ecc71", 
+        video: "https://drive.google.com/file/d/1mM9LgGduxvUbFbR5fV-QY5pFTzn97JZP/preview" 
+    }
+};
+
+    function loadBiome() {
+        const params = new URLSearchParams(window.location.search);
+        const biomeKey = (params.get('type') || params.get('biome') || "").toLowerCase();
+        const data = db[biomeKey];
+
+        if (data) {
+            document.getElementById('biome-title').innerText = data.title;
+            document.getElementById('temp').innerText = data.temp;
+            document.getElementById('rain').innerText = data.rain;
+            document.getElementById('plants').innerText = data.plants;
+            document.getElementById('animals').innerText = data.animals;
+            document.documentElement.style.setProperty('--biome-color', data.color);
+
+            // Setting the iframe source
+            const videoFrame = document.getElementById('biome-video');
+            videoFrame.src = data.video;
+            
+        } else {
+            document.getElementById('biome-title').innerText = "بيانات غير متوفرة";
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', loadBiome);
+</script>
+</body>
+</html>
