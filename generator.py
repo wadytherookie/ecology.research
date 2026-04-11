@@ -11,7 +11,8 @@ print("Starting generation...")
 
 for biome in biomes:
     # IMPORTANT: These lines MUST be indented to stay inside the loop
-    url = f"http://192.168.100.26:8000/biome_view.html?type={biome}"
+ # Change the URL to your LIVE GitHub link
+url = f"https://wadytherookie.github.io/ecology.research/index.html?biome={biome}"
     
     qr = qrcode.QRCode(version=1, box_size=20, border=4)
     qr.add_data(url)
