@@ -30,25 +30,23 @@
 
         .content-value { font-size: 1.4rem; font-weight: 300; }
 
-        .video-section { 
+      .video-section { 
     width: 100%; 
-    height: 500px; /* Force a fixed height */
+    height: 500px; 
     margin-top: 40px; 
     background: #000; 
     position: relative; 
     overflow: hidden; 
     border-radius: 30px; 
     border: 1px solid rgba(255, 255, 255, 0.1);
-    /* This prevents the "jumping" effect during load */
-    display: block;
 }
 
 .video-section iframe { 
     width: 100%; 
-    height: 100%; 
+    height: 120%; /* We make it taller to push the Drive header out of view */
     border: none;
-    /* Force GPU acceleration to stop jittery scrolling */
-    will-change: transform;
+    margin-top: -50px; /* This pulls the video up so the actual content is centered */
+    display: block;
 }
     </style>
 
