@@ -30,12 +30,14 @@
         align-items: center;
     }
 
-    .video-section iframe { 
+  .video-section iframe { 
         width: 100%; 
         height: 100%; 
         border: none;
         display: block;
-        min-height: 550px; /* Forces the internal player to match the container */
+        /* Pulls the iframe content left to counteract the Google Drive right-shift */
+        margin-left: -5%; 
+        width: 110%; 
     }
 </style>
 </head>
