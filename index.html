@@ -6,37 +6,36 @@
     <title>أبحاث المناطق الحيوية</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root { --biome-color: #2ecc71; --bg-dark: #020806; --glass: rgba(255, 255, 255, 0.02); --gold: #d4af37; }
-        body { background-color: var(--bg-dark); color: #f8f9fa; font-family: 'Cairo', sans-serif; padding: 30px; }
-        .main-container { background: var(--glass); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; padding: 60px; max-width: 1300px; margin: auto; }
-        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
-        .info-card { background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 20px; border-right: 5px solid var(--biome-color); }
-        .label { display: block; color: var(--biome-color); font-size: 0.8rem; font-weight: 900; margin-bottom: 10px; }
-        .content-value { font-size: 1.4rem; font-weight: 300; }
+   <style>
+    :root { --biome-color: #2ecc71; --bg-dark: #020806; --glass: rgba(255, 255, 255, 0.02); --gold: #d4af37; }
+    body { background-color: var(--bg-dark); color: #f8f9fa; font-family: 'Cairo', sans-serif; padding: 30px; }
+    .main-container { background: var(--glass); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; padding: 60px; max-width: 1300px; margin: auto; }
+    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+    .info-card { background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 20px; border-right: 5px solid var(--biome-color); }
+    .label { display: block; color: var(--biome-color); font-size: 0.8rem; font-weight: 900; margin-bottom: 10px; }
+    .content-value { font-size: 1.4rem; font-weight: 300; }
 
-        /* Stable Video Container */
-        .video-section { 
-            width: 100%; 
-            margin-top: 40px; 
-            background: #000; 
-            border-radius: 30px; 
-            overflow: hidden; 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            aspect-ratio: 16 / 9; 
-            position: relative;
-        }
+    /* Reverted to your stable, original structure */
+    .video-section { 
+        width: 100%; 
+        border-radius: 30px; 
+        overflow: hidden; 
+        margin-top: 40px; 
+        background: #000; 
+        position: relative; 
+        padding-bottom: 56.25%; 
+        height: 0; 
+    }
 
-        .video-section iframe { 
-            position: absolute;
-            top: -50px; /* Clips the Google Drive top header */
-            left: 0;
-            width: 100%; 
-            height: calc(100% + 50px); /* Compensates for the clipped header */
-            border: none;
-            display: block;
-        }
-    </style>
+    .video-section iframe { 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        border: none; 
+    }
+</style>
 </head>
 <body>
     <div class="main-container">
