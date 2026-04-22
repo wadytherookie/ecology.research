@@ -16,29 +16,31 @@
     .content-value { font-size: 1.4rem; font-weight: 300; }
 
   /* Increased container width and base height */
-    .video-section { 
-        width: 100%; 
-        max-width: 1000px; /* Limits the width so it doesn't look stretched on huge screens */
-        margin: 40px auto 0 auto; /* Centers the box automatically */
-        background: #000; 
-        border-radius: 30px; 
-        overflow: hidden; 
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        min-height: 550px; /* Makes the box taller and more prominent */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+   /* استبدل كود الـ CSS القديم الخاص بـ .video-section بهذا الكود النظيف */
+.video-section { 
+    width: 100%; 
+    max-width: 1000px; 
+    margin: 40px auto 0 auto; 
+    background: #000; 
+    border-radius: 30px; 
+    overflow: hidden; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 500px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
 
-  .video-section iframe { 
-        width: 100%; 
-        height: 100%; 
-        border: none;
-        display: block;
-        /* Pulls the iframe content left to counteract the Google Drive right-shift */
-        margin-left: -5%; 
-        width: 110%; 
-    }
+.video-section iframe { 
+    width: 100%; 
+    height: 100%; 
+    border: none;
+    display: block;
+    /* إزالة أي إزاحة أو تكبير يمنع التحميل */
+    margin-left: 0; 
+    transform: none;
+}
 </style>
 </head>
 <body>
