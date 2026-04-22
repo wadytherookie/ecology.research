@@ -1,87 +1,143 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>أبحاث المناطق الحيوية</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root { --biome-color: #2ecc71; --bg-dark: #020806; --glass: rgba(255, 255, 255, 0.02); --gold: #d4af37; }
-        body { background-color: var(--bg-dark); color: #f8f9fa; font-family: 'Cairo', sans-serif; padding: 30px; }
-        .main-container { background: var(--glass); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; padding: 60px; max-width: 1300px; margin: auto; }
-        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
-        .info-card { background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 20px; border-right: 5px solid var(--biome-color); }
-        .label { display: block; color: var(--biome-color); font-size: 0.8rem; font-weight: 900; margin-bottom: 10px; }
-        .content-value { font-size: 1.2rem; }
-        /* Updated Video Styles */
-.video-section { 
-    width: 100%; 
-    margin-top: 40px; 
-    background: #000; 
-    position: relative; 
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0; 
-    overflow: hidden; 
-    border-radius: 20px; /* Matching your theme */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
 
-.video-section iframe { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    border: none;
-    /* Added to improve rendering performance */
-    will-change: transform; 
-}
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>أبحاث المناطق الحيوية</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root { --biome-color: #2ecc71; --bg-dark: #020806; --glass: rgba(255, 255, 255, 0.02); --gold: #d4af37; }
+
+        body { background-color: var(--bg-dark); color: #f8f9fa; font-family: 'Cairo', sans-serif; padding: 30px; }
+
+        .main-container { background: var(--glass); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; padding: 60px; max-width: 1300px; margin: auto; }
+
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+
+        .info-card { background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 20px; border-right: 5px solid var(--biome-color); }
+
+        .label { display: block; color: var(--biome-color); font-size: 0.8rem; font-weight: 900; margin-bottom: 10px; }
+
+        .content-value { font-size: 1.4rem; font-weight: 300; }
+
+        .video-section { width: 100%; border-radius: 30px; overflow: hidden; margin-top: 40px; background: #000; position: relative; padding-bottom: 56.25%; height: 0; }
+
+        .video-section iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
     </style>
+
 </head>
+
 <body>
+
     <div class="main-container">
-        <h1 id="biome-title">جاري التحميل...</h1>
+
+        <h1 id="biome-title">جاري تحميل البيانات...</h1>
+
         <div class="info-grid">
+
             <div class="info-card"><span class="label">درجة الحرارة</span><span id="temp" class="content-value">--</span></div>
+
             <div class="info-card"><span class="label">معدل التساقط</span><span id="rain" class="content-value">--</span></div>
+
             <div class="info-card"><span class="label">الحياة النباتية</span><span id="plants" class="content-value">--</span></div>
+
             <div class="info-card"><span class="label">الحياة الحيوانية</span><span id="animals" class="content-value">--</span></div>
+
             <div class="info-card" style="border-right-color: #ff4757;"><span class="label">أنواع مهددة بالانقراض</span><span id="endangered" class="content-value">--</span></div>
+
             <div class="info-card" style="border-right-color: #2ed573;"><span class="label">كيفية الحماية</span><span id="solutions" class="content-value">--</span></div>
+
         </div>
+
         <div class="video-section">
-            <iframe id="biome-video" src="" allow="autoplay; fullscreen"></iframe>
+
+            <iframe id="biome-video" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
         </div>
+
     </div>
 
+
+
 <script>
+
     const db = {
-        "tundra": { title: "التندرا", temp: "-34°C إلى 12°C", rain: "15-25 سم", plants: "حشائش، شجيرات", animals: "الدببة القطبية، الرنة", endangered: "الدب القطبي، الثعلب القطبي", solutions: "الحد من التلوث والاحتباس الحراري", color: "#a5f3fc", video: "https://www.youtube.com/embed/5O6q6a10mJk" },
-        "desert": { title: "الصحراء", temp: "20°C إلى 49°C", rain: "6-26 سم", plants: "الصبار، الطلح", animals: "الجمال، الزواحف", endangered: "المها العربي", solutions: "حماية الموائل من الرعي الجائر", color: "#ff9f1c", video: "https://www.youtube.com/embed/4yP0643Jd10" },
-        "rainforest": { title: "الغابات المطيرة", temp: "24°C إلى 27°C", rain: "200-1000 سم", plants: "الخيزران، قصب السكر", animals: "النمور، الطوقان", endangered: "الغوريلا، جاغوار", solutions: "منع إزالة الغابات", color: "#2ecc71", video: "https://www.youtube.com/embed/36GsaRLmTGk" }
-        // Add other biomes here following this pattern
+
+        "tundra": { title: "التندرا", temp: "-34°C إلى 12°C", rain: "15-25 سم", plants: "حشائش، شجيرات", animals: "الدببة القطبية، الرنة", endangered: "الدب القطبي، الثعلب القطبي", solutions: "الحد من التلوث والاحتباس الحراري", color: "#a5f3fc", video: "https://drive.google.com/file/d/1X-TpXrW33I2aiGKDj1pEtG54WfX1b5Dt/preview" },
+
+        "taiga": { title: "التايغا", temp: "-54°C إلى 21°C", rain: "30-84 سم", plants: "أشجار الصنوبر والسرو", animals: "ثيران الموس، القندس", endangered: "نمر سيبيريا، الوشق", solutions: "تنظيم عمليات قطع الأشجار", color: "#16a085", video: "https://drive.google.com/file/d/1jV2zmIdP_BmFrdlrnBv4zvgVBoGXr3nd/preview" },
+
+        "temperate_forest": { title: "الغابات المعتدلة", temp: "-30°C إلى 30°C", rain: "75-150 سم", plants: "البلوط، الزان", animals: "السناجب، الغزلان", endangered: "النمر النمر", solutions: "إعادة التشجير والمحميات الطبيعية", color: "#27ae60", video: "https://drive.google.com/file/d/1qHN3iaYCubLQyePDaitZwxtEV8ADDlY0/preview" },
+
+        "woodland": { title: "المناطق الحرجية", temp: "10°C إلى 40°C", rain: "38-100 سم", plants: "شجيرات دائم الخضرة", animals: "الأرانب، الطيور", endangered: "الوشق الإيبيري", solutions: "منع حرائق الغابات والتوسع العمراني", color: "#95a5a6", video: "https://drive.google.com/file/d/1OKEeZ8-QfUoUwX3rZkgApDcCSzmHXTl0/preview" },
+
+        "grassland": { title: "المناطق العشبية", temp: "-40°C إلى 38°C", rain: "50-89 سم", plants: "الأعشاب، الحشائش", animals: "البيسون، الخيول", endangered: "كلب البراري", solutions: "حماية المراعي من الرعي الجائر", color: "#f4e285", video: "https://drive.google.com/file/d/12WMa77l94SfIq7XJIL2yiFvb9r2Xl1Xc/preview" },
+
+        "desert": { title: "الصحراء", temp: "20°C إلى 49°C", rain: "6-26 سم", plants: "الصبار، الطلح", animals: "الجمال، الزواحف", endangered: "المها العربي، الثعلب الرملي", solutions: "الحفاظ على الموائل ومنع الصيد", color: "#ff9f1c", video: "https://drive.google.com/file/d/1ZA-97h2y9qGPUngHY6YBa_ds2AH24TiL/preview" },
+
+        "savanna": { title: "السفانا الاستوائية", temp: "20°C إلى 30°C", rain: "50-130 سم", plants: "الحشائش، أشجار متفرقة", animals: "الأسود، الزرافات", endangered: "وحيد القرن، الفيلة الأفريقية", solutions: "مكافحة الصيد غير المشروع", color: "#e67e22", video: "https://drive.google.com/file/d/1wD6nD7UIXUAVqLbrDfrNFITm2x_Rw4l9/preview" },
+
+        "seasonal_forest": { title: "الغابات الموسمية", temp: "20°C إلى 25°C", rain: "أكثر من 200 سم", plants: "أشجار دائمة الخضر", animals: "القردة، الفيلة", endangered: "الفيل الآسيوي", solutions: "الإدارة المستدامة للموارد الغابية", color: "#d35400", video: "https://drive.google.com/file/d/1VUUwEwSC-XGhhOzCdndx_3xBVJnUTyFf/preview" },
+
+        "rainforest": { title: "الغابات المطيرة", temp: "24°C إلى 27°C", rain: "200-1000 سم", plants: "الخيزران، قصب السكر", animals: "النمور، الطوقان", endangered: "الغوريلا، النمر البنغالي", solutions: "منع إزالة الغابات من أجل الزراعة", color: "#2ecc71", video: "https://drive.google.com/file/d/1mM9LgGduxvUbFbR5fV-QY5pFTzn97JZP/preview" }
+
     };
 
+
+
     function loadBiome() {
+
         const params = new URLSearchParams(window.location.search);
-        const biomeKey = (params.get('biome') || "").toLowerCase();
+
+        const biomeKey = (params.get('type') || params.get('biome') || "").toLowerCase().trim();
+
         const data = db[biomeKey];
+
+
+
         if (data) {
+
             document.getElementById('biome-title').innerText = data.title;
+
             document.getElementById('temp').innerText = data.temp;
+
             document.getElementById('rain').innerText = data.rain;
+
             document.getElementById('plants').innerText = data.plants;
+
             document.getElementById('animals').innerText = data.animals;
+
             document.getElementById('endangered').innerText = data.endangered;
+
             document.getElementById('solutions').innerText = data.solutions;
+
             document.documentElement.style.setProperty('--biome-color', data.color);
+
             document.getElementById('biome-video').src = data.video;
+
         } else {
-            document.getElementById('biome-title').innerText = "بيانات غير متوفرة - تأكد من مسح الباركود الصحيح";
+
+            document.getElementById('biome-title').innerText = "بيانات غير متوفرة: " + biomeKey;
+
         }
+
     }
-    document.addEventListener('DOMContentLoaded', loadBiome);
+
+    window.onload = loadBiome;
+
 </script>
+
 </body>
+
 </html>
