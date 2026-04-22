@@ -30,24 +30,34 @@
 
         .content-value { font-size: 1.4rem; font-weight: 300; }
 
-      .video-section { 
-    width: 100%; 
-    height: 500px; 
-    margin-top: 40px; 
-    background: #000; 
-    position: relative; 
-    overflow: hidden; 
-    border-radius: 30px; 
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
+   
+    :root { --biome-color: #2ecc71; --bg-dark: #020806; --glass: rgba(255, 255, 255, 0.02); --gold: #d4af37; }
+    body { background-color: var(--bg-dark); color: #f8f9fa; font-family: 'Cairo', sans-serif; padding: 30px; }
+    .main-container { background: var(--glass); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; padding: 60px; max-width: 1300px; margin: auto; }
+    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+    .info-card { background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 20px; border-right: 5px solid var(--biome-color); }
+    .label { display: block; color: var(--biome-color); font-size: 0.8rem; font-weight: 900; margin-bottom: 10px; }
+    .content-value { font-size: 1.4rem; font-weight: 300; }
 
-.video-section iframe { 
-    width: 100%; 
-    height: 120%; /* We make it taller to push the Drive header out of view */
-    border: none;
-    margin-top: -50px; /* This pulls the video up so the actual content is centered */
-    display: block;
-}
+    /* The new, non-intrusive container */
+    .video-section { 
+        width: 100%; 
+        margin-top: 40px; 
+        background: #000; 
+        border-radius: 30px; 
+        overflow: hidden; 
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Maintain a standard 16:9 ratio without forcing zoom */
+        aspect-ratio: 16 / 9; 
+    }
+
+    .video-section iframe { 
+        width: 100%; 
+        height: 100%; 
+        border: none;
+        display: block;
+    }
+
     </style>
 
 </head>
