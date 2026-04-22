@@ -17,29 +17,27 @@
 
   /* Increased container width and base height */
    /* استبدل كود الـ CSS القديم الخاص بـ .video-section بهذا الكود النظيف */
-.video-section { 
-    width: 100%; 
-    max-width: 1000px; 
-    margin: 40px auto 0 auto; 
-    background: #000; 
-    border-radius: 30px; 
-    overflow: hidden; 
+.video-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto 0;
+    border-radius: 30px;
+    overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    min-height: 500px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
+
+    /* THIS is the key fix */
+    aspect-ratio: 16 / 9;
+    background: #000;
 }
 
-.video-section iframe { 
-    width: 100%; 
-    height: 100%; 
+.video-section iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     border: none;
-    display: block;
-    /* إزالة أي إزاحة أو تكبير يمنع التحميل */
-    margin-left: 0; 
-    transform: none;
 }
 </style>
 </head>
